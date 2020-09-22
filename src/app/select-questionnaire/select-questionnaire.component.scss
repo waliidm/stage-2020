@@ -1,0 +1,57 @@
+.main{
+ position: absolute;
+    background-color: #e7eff6;
+    height: 100%;
+    width: 100%;
+   
+}
+.content{
+
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr;
+    margin: auto;
+    width: 60%;
+    // padding:auto;
+    margin-top:5%;
+    // position: relative;
+
+}
+mat-card{
+    // margin-top: 15%;
+    // margin-right: 2%;
+    height: 80%;
+    width: 80%;
+    position: relative;
+
+}
+
+.nav
+ {
+     background-color:#2a4d69;
+     color: white;
+     width: 100%;
+
+ }
+ .enter{
+     background-color: #2a4d69;
+    width:50%;
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    height: 20%;
+
+}
+
+.add{
+    width:100%;
+    margin-top: 5px;
+    background-color: #2a4d69;
+    color: white;
+
+}
+.delete
+{
+    position: absolute;
+    right:8px;
+    bottom: 8px;
+}

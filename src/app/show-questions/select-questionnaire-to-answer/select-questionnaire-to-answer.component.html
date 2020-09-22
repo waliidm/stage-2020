@@ -1,0 +1,19 @@
+
+<div class="main">
+  <mat-toolbar class="nav">
+   <span>Choisissez un questionnaire à modifier</span>
+  </mat-toolbar>
+<div class="content">
+<mat-card   *ngFor="let item of questionnaires"  >
+
+    <mat-toolbar class="nav">
+      <span>{{item.title}}</span>
+    </mat-toolbar>
+
+<mat-card-actions>
+    <button mat-raised-button routerLink="/show/{{item._id}}" >{{item._id}}</button>
+  </mat-card-actions>
+</mat-card>
+
+</div>
+</div>

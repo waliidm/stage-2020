@@ -1,0 +1,11 @@
+<mat-toolbar class="nav">
+    <span>Créer un questionnaire</span>
+</mat-toolbar>
+<div class="main">
+    <mat-form-field >
+        <mat-label>Nom:</mat-label>
+        <input matInput  required [(ngModel)]="title" class="input">
+      </mat-form-field>
+
+      <button mat-raised-button (click)="onSubmit()" class="button">add</button>
+    </div>

@@ -1,0 +1,95 @@
+<div class="main">
+<p>
+  <mat-toolbar class="nav">
+    <span>Edit</span>
+  </mat-toolbar>
+</p>
+
+
+    <mat-card class="card" *ngFor="let el of quest; let i=index"  >
+
+        <mat-card-title>{{el.question}} </mat-card-title>
+
+        <mat-list  role="list" *ngIf=" el.type == 1" >
+          <mat-radio-group >
+            <mat-list-item role="listitem" *ngFor="let answer of el.answer" >	<mat-radio-button color="primary" value="{{answer}}">{{answer}}</mat-radio-button></mat-list-item>
+        </mat-radio-group>
+        <button mat-raised-button class="alterButton" (click)="display(el.question,el.type,el.answer,el._id)"><mat-icon>edit</mat-icon></button>
+        <button mat-raised-button color="warn" (click)="deleteData(el._id)" class="delete"><mat-icon >delete</mat-icon></button>
+        </mat-list>
+
+        <mat-list  role="list" *ngIf=" el.type == 2" >
+          <mat-list-item role="listitem" *ngFor="let answer of el.answer" >	
+              <mat-checkbox   >{{answer}}</mat-checkbox>
+          </mat-list-item>
+          <button mat-raised-button class="alterButton" (click)="display(el.question,el.type,el.answer,el._id)"><mat-icon >edit</mat-icon></button>
+          <button mat-raised-button color="warn" (click)="deleteData(el._id)" class="delete"><mat-icon >delete</mat-icon></button>
+        </mat-list>
+
+        <mat-list  role="list" *ngIf=" el.type == 3" >
+            <mat-list-item role="listitem" *ngFor="let answer of el.answer" >	    
+              <mat-form-field>
+                <mat-label>{{answer}}</mat-label>
+                <input matInput  required >
+              </mat-form-field>
+            </mat-list-item>
+            <button mat-raised-button class="alterButton" (click)="display(el.question,el.type,el.answer,el._id)"><mat-icon>edit</mat-icon></button>
+          <button mat-raised-button color="warn" (click)="deleteData(el._id)" class="delete"><mat-icon >delete</mat-icon></button>
+        </mat-list>
+
+    </mat-card>
+
+
+<mat-card class="add" >
+  <mat-card-title>Add a Question </mat-card-title>
+  <mat-form-field>
+    <mat-label> Insert Question Title</mat-label>
+    <input matInput placeholder="Enter here"  required [(ngModel)]="addinput">
+  </mat-form-field>
+
+  <mat-list  role="list">
+    <mat-list-item role="listitem">	<mat-radio-button color="primary" (click)="type = 1">radio</mat-radio-button></mat-list-item>
+    <mat-list-item role="listitem"><mat-radio-button color="primary"(click)="type = 2">check</mat-radio-button></mat-list-item>
+    <mat-list-item role="listitem"><mat-radio-button color="primary"(click)="type = 3">autre</mat-radio-button></mat-list-item>
+  </mat-list>
+  <hr>
+
+    <mat-list  role="list" *ngIf="type == 1">
+      <form [formGroup]="Form" >
+        <div formArrayName="adds">
+          <div *ngFor="let add of addForms.controls; let i=index" 
+              [formGroupName]="i">
+              <mat-radio-button color="primary" (click)="type = 1">  <input  class="line"matInput placeholder="Enter here" required formControlName="content"></mat-radio-button>
+              <button mat-mini-fab color="warn" (click)="deleteQuestion(i)" ><mat-icon >delete</mat-icon></button>
+           </div>
+        </div>
+         <button  mat-mini-fab (click)="addlist()" *ngIf="type!=0" class="nav" ><span><mat-icon >note_add</mat-icon></span> </button>
+         <button mat-flat-button  (click)="submit()" class="addbutton"type="button">Submit Question</button>
+        </form>
+    </mat-list>
+
+    <mat-list  role="list" *ngIf="type == 2">
+      <form [formGroup]="Form" >
+       <div formArrayName="adds">
+
+              <mat-list-item *ngFor="let add of addForms.controls; let i=index" 
+              [formGroupName]="i">
+                <mat-checkbox><input  class="line"matInput placeholder="Enter here" formControlName="content" required></mat-checkbox>
+                <button mat-mini-fab color="warn" (click)="deleteQuestion(i)" ><mat-icon >delete</mat-icon></button>
+          </mat-list-item>
+      </div>
+      <button  mat-mini-fab class="nav" (click)="addlist()" *ngIf="type!=0"><span><mat-icon >note_add</mat-icon></span> </button>
+      <button mat-flat-button  (click)="submit()" class="addbutton " type="button">Submit Question</button>
+      </form>
+    </mat-list>
+
+  <mat-list  role="list" *ngIf="type == 3" >
+             <mat-form-field>
+              <mat-label>Placeholder </mat-label>
+            <input matInput [(ngModel)]="addanswer">
+             </mat-form-field>
+      <button mat-flat-button color="primary" (click)="submit()" class="addbutton" type="button">Submit Question</button>
+  </mat-list>
+
+</mat-card>
+</div>

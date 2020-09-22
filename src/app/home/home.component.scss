@@ -1,0 +1,78 @@
+.line{
+    width: 50%;
+    height: 60%;
+    margin: auto;
+    margin-top: 1rem;
+
+}
+.line img{
+
+
+    width: 50%;
+    height: 50%;
+    margin-left: 25%;
+}
+.line button
+{
+    
+
+    width: 60%;
+    margin-left: 20%;
+
+}
+.nav
+ {
+     background-color:#2a4d69;
+     color: white;
+     padding: relative;
+     width: 100%;
+
+ }
+ .cardToolbar
+ {
+    background-color: #4b86b4;
+    color: white;
+    position: relative;
+    margin: auto;
+    white-space:normal !important;
+    word-wrap:break-word;
+
+ }
+
+ .main{
+     border: 2px solid black;
+     background-color: #e7eff6;
+     height: 100%;
+     width: 100%;
+     position: absolute;
+     
+ }
+.auth
+{
+    // position: absolute;
+    right: 8px;
+    // top : 25px;
+
+    position :absolute;
+    
+}
+mat-icon
+{
+    margin-right: 2px;
+}
+.navbar
+{
+    margin-right: 5px;
+    color: #2a4d69;
+}
+.content
+{
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (max-width : 690px)
+{
+ .cardToolbar{
+    
+ }
+}

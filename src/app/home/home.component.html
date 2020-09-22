@@ -1,0 +1,42 @@
+
+<div class="main">
+  <p>
+    <mat-toolbar class="nav">
+      <span>survey</span>
+      <div class="auth">
+      <button mat-raised-button (click)="login()" *ngIf="show==true" class="navbar"><mat-icon>person_pin</mat-icon>S'identifier</button>
+      <button mat-raised-button  (click)="register()" *ngIf="show==true"class="navbar">Créer un compte</button>
+      <button mat-raised-button  *ngIf="superuser&&show==false" routerLink="/user" class="navbar" >gérer les utilisateurs</button>
+      <button mat-raised-button  *ngIf="show==false" (click)="logout()" class="navbar" >Se déconnecter</button>
+
+    </div>
+    </mat-toolbar>
+  </p>
+
+  <div class="content">
+        <mat-card class="line" >
+            <p>
+                <mat-toolbar   class="cardToolbar">
+                    Choisissez une enquête à répondre
+                </mat-toolbar>
+              </p>
+            <img mat-card-image src="../../assets/106903-ONCZPN-850.jpg"  >
+            <mat-card-actions>
+                <button mat-raised-button class="cardToolbar" routerLink="/show">Show</button>
+              </mat-card-actions>
+        </mat-card>
+        <mat-card class="line"  *ngIf="admin==true|| superuser==true">
+        <p>
+            <mat-toolbar class="cardToolbar" >
+              <span>Modifier une enquête</span>
+            </mat-toolbar>
+          </p>
+        <img mat-card-image src="../../assets/2914490.jpg"  >
+        <mat-card-actions>
+            <button mat-raised-button class="cardToolbar" routerLink="/select">Modif</button>
+          </mat-card-actions>
+    </mat-card>
+  </div>
+  </div>
+
+

@@ -1,0 +1,117 @@
+
+
+  <!-- <mat-card class="card">
+  <mat-vertical-stepper #stepper>
+    <form [formGroup]="FormA" >
+      <div formArrayName="adds">
+    <mat-step *ngFor="let add of addForms.controls; let i=index" 
+    [formGroupName]="i">
+        <input type="text" formControlName="title" [(ngModel)]="title">
+        <ng-template matStepLabel>{{add.title}}</ng-template>
+          <p formControlName="title"></p>
+        <mat-list  role="list" *ngIf=" add.type == 1">
+         <mat-radio-group [(ngModel)]="rad">
+            <mat-list-item role="listitem" *ngFor="let addtab of add.QAnswer; let j=index" 
+            [formGroupName]="j" >	 
+                <mat-radio-button color="primary" value="{{answer}}" formControlName="content">{{answer}}</mat-radio-button>
+            </mat-list-item>
+        </mat-radio-group>
+        <button mat-raised-button color="primary" (click)="display(question._id)">Show ID</button>
+          </mat-list>
+        <mat-list  role="list" *ngIf=" question.type == 2">
+                <mat-list-item role="listitem" *ngFor="let answer of question.answer" >	
+                     <mat-checkbox   >{{answer}}</mat-checkbox>
+                </mat-list-item>
+            <button mat-raised-button color="primary" (click)="display(question._id)">Show ID</button>
+        </mat-list>
+
+        <mat-list  role="list" *ngIf=" question.type == 3">
+                <mat-list-item role="listitem" *ngFor="let answer of question.answer" >	    
+                    <mat-form-field>
+                    <mat-label>{{answer}}</mat-label>
+                    <input matInput  required>
+                  </mat-form-field>
+                </mat-list-item>
+            <button mat-raised-button color="primary" (click)="display(question._id)">Show ID</button>
+         </mat-list>
+
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+
+    </mat-step>
+
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </div>
+  </form>
+  </mat-vertical-stepper>
+</mat-card> -->
+
+<div class="main"> 
+<mat-card class="card">
+  <mat-vertical-stepper #stepper >
+
+    <mat-step *ngFor="let question of questions" >
+
+        <ng-template matStepLabel class="name">{{question.question}}</ng-template>
+        <mat-card-title class="name" >{{question.question}} </mat-card-title>
+
+        <mat-list  role="list" *ngIf=" question.type == 1">
+         <mat-radio-group required  [(ngModel)]="rad[question._id]" (change)="logchange(question._id)">
+            <mat-list-item role="listitem" *ngFor="let answer of question.answer" >	 
+                <mat-radio-button color="primary" value="{{answer}}" >{{answer}}</mat-radio-button>
+            </mat-list-item>
+        </mat-radio-group>
+          </mat-list>
+
+        <mat-list  role="list" *ngIf=" question.type == 2">
+      
+                <mat-list-item role="listitem" *ngFor="let answer of question.answer" >	
+                     <mat-checkbox value="answer"   (change)="checkchange($event,question._id,answer)"><p>{{answer}}</p></mat-checkbox>
+                </mat-list-item>
+
+        </mat-list>
+
+        <mat-list  role="list" *ngIf=" question.type == 3">
+                <mat-list-item role="listitem" *ngFor="let answer of question.answer" >	    
+                    <mat-form-field>
+                    <mat-label>{{answer}}</mat-label>
+                    <input matInput  required [(ngModel)]="rad[question._id]">
+                  </mat-form-field>
+                </mat-list-item>
+
+         </mat-list>
+
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+
+    </mat-step>
+
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <mat-form-field>
+          <mat-label>Please insert your name</mat-label>
+          <input matInput  required [(ngModel)]="name">
+        </mat-form-field>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="collect()">Submit</button>
+      </div>
+    </mat-step>
+
+  </mat-vertical-stepper>
+</mat-card>
+</div>

@@ -1,0 +1,37 @@
+
+  <div class="main">
+      <mat-toolbar class="nav">
+       <span>Choisissez un questionnaire à modifier</span>
+      </mat-toolbar>
+
+
+    <div class="content">
+      <mat-grid-list [cols]="breakpoint" colWid rowHeight="1:1" (window:resize)="onResize($event)" >
+        <mat-grid-tile *ngFor="let item of questionnaires" >
+          <mat-card>
+           <mat-toolbar class="nav">
+            <span>{{item.title}}</span>
+            </mat-toolbar>
+
+    <mat-card-actions>
+        <button color="primary"mat-raised-button routerLink="/create/{{item._id}}" class="enter">Select</button>
+        <button mat-raised-button color="warn" (click)="remove(item._id)" class="delete"><mat-icon >delete</mat-icon></button>
+      </mat-card-actions>
+</mat-card>
+</mat-grid-tile>
+<mat-grid-tile>
+<mat-card >
+
+  <mat-toolbar class="nav">
+    <span>Créer un questionnaire</span>
+  </mat-toolbar>
+
+  <button mat-raised-button mat-icon class="add" (click)="add()"><mat-icon >note_add</mat-icon></button>
+</mat-card>
+</mat-grid-tile>
+</mat-grid-list>
+</div>
+
+
+
+</div>
